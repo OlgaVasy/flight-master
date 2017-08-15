@@ -1,7 +1,8 @@
-<div>
+  <div class="background">
+  <div class = "top">
   <div id="heading" class="headline">
     Book flights online  
-  </div>  
+  </div>    
   <div class="logged" ng-style="startCtrl.startService.loggedInButton()">          
           <a ui-sref="profile ({username: startCtrl.profileService.userProfile.username})">My profile |</a>
           <a ng-click="startCtrl.startService.logOut()">Log out</a>
@@ -9,14 +10,22 @@
         <a ui-sref="registration" ng-style="startCtrl.startService.changePage()">Sign Up |</a>
         <a ui-sref="login" ng-style="startCtrl.startService.changePage()">Log In</a>
        
+      </div>   
+</div>
+		<div class = "table">
+		<div class = "tableHead">
+		<div>City of origin</div>
+		<div>City of destination</div>
+		<div>Time in the air</div>
+      <div>Offset</div>
       </div>
-      <div class="flightsContainer" ng-repeat= "flight  in startCtrl.startService.flightsOffered">      
-       <div> {{flight.origin}} - {{flight.destination}} </div>
-       <div> Time in the air: {{flight.flightTime}} hours</div>
-       <div> Offset: {{flight.offset}} hours</div>
+      <div class = "flightsContainer"ng-repeat= "flight  in startCtrl.startService.flightsOffered">
+       <div> {{flight.origin}}
+       </div>
+       <div> {{flight.destination}} </div>
+       <div> {{flight.flightTime}} hours</div>
+       <div> {{flight.offset}} hours</div>
       
-       
+       </div>
      </div>
-    
-    </div>
- 
+ </div>
