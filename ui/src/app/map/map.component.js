@@ -1,5 +1,5 @@
 import templateUrl from './map.component.html'
-
+import BookingService from 'app/booking/booking.service.js'
 /* @ngInject */
 class MapController {
   zoom = 7
@@ -7,8 +7,8 @@ class MapController {
   markers = []
   paths = []
 
-  constructor ($map, locations) {
-    this.$map = $map
+  constructor ($map, locations, bookingService) {
+    this.$map = $map  
 
     // add markers from an angular constant
     const { memphis, nashville, knoxville } = locations
@@ -18,8 +18,8 @@ class MapController {
 
     // add paths manually
     const paths = [
-      [memphis, nashville, '#CC0099'],
-      [nashville, knoxville, '#AA1100']
+//      [memphis, nashville, '#CC0099'],
+//      [nashville, knoxville, '#AA1100']
     ]
 
     paths.forEach(args => this.addPath(...args))

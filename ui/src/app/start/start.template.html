@@ -3,19 +3,21 @@
   <div id="heading" class="headline">
     Book flights online  
   </div>    
-  <div class="logged" ng-style="startCtrl.startService.loggedInButton()">          
+  <div class="log" ng-style="startCtrl.startService.loggedInButton()">          
           <a ui-sref="profile ({username: startCtrl.profileService.userProfile.username})">My profile |</a>
           <a ng-click="startCtrl.startService.logOut()">Log out</a>
-
-        <a ui-sref="registration" ng-style="startCtrl.startService.changePage()">Sign Up |</a>
-        <a ui-sref="login" ng-style="startCtrl.startService.changePage()">Log In</a>
+        <a class="please" ng-style="startCtrl.startService.changePage()">Please</a>
+        <a ui-sref="login" ng-style="startCtrl.startService.changePage()">log In</a>
+       <a class="please" ng-style="startCtrl.startService.changePage()">to find a flight. Don't have an account yet? Please</a>
+        <a ui-sref="registration" ng-style="startCtrl.startService.changePage()">sign Up</a>
+       
        
       </div>   
 </div>
 		<div class = "table">
 		<div class = "tableHead">
-		<div>City of origin</div>
-		<div>City of destination</div>
+		<div>Origin</div>
+		<div>Destination</div>
 		<div>Time in the air</div>
       <div>Offset</div>
       </div>

@@ -1,3 +1,25 @@
- <div id="heading" class="headline">
-    This is a login page  
-  </div> 
+ <div class="loginContainer">
+    <form class="login-form">
+        <fieldset>
+          <legend><h2>Login</h2></legend>
+          <div class="login-form-group">
+            <label for="inputUsername" class="login-input-col1 control-label" ng-style="{'text-indent': '-50px'}">Username</label>
+            <div class="login-input-col2">
+              <input type="text" class="login-form-control" id="inputUsername" placeholder="Username" ng-model="creds.username">
+            </div>
+          </div>
+          <div class="login-form-group">
+            <label for="inputPassword" class="login-input-col1 control-label" ng-style="{'text-indent': '-50px'}">Password</label>
+            <div class="login-input-col2">
+              <input type="text" class="login-form-control" id="inputPassword" placeholder="Password" ng-model="creds.password">
+            </div>
+          </div>
+          <div class="login-form-group">
+            <div class="login-input-col2">
+              <button type="reset" class="login-btn btn-default">Cancel</button>
+              <button type="submit" class="login-btn btn-primary" ng-click='loginCtrl.loginService.getLogin(creds)' >Submit</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+  </div>

@@ -26,6 +26,16 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     	url: '/profile',
     	component: 'profileComponent' 
     }
+    ).state('booking',
+    		{
+    	url: '/booking',
+    	component: 'bookingComponent' ,
+    	resolve: {
+            allFlights: function (bookingService, $transition$) {
+              return bookingService.getRoute($transition$)
+            }
+          }
+    }
     )
     
   $urlRouterProvider.otherwise('/');

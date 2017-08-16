@@ -12,4 +12,5 @@ class MapService {
   }
 }
 
+
 export default MapService

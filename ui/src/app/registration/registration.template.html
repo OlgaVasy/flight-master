@@ -1,3 +1,49 @@
-  <div id="heading" class="headline">
-    This is reg page  
-  </div> 
+<div class="startTweetContainer">
+ <form class="form-horizontal">
+    <fieldset>
+      <legend>Registration Form</legend>
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model='regCtrl.user.profile.email'>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="inputUsername" placeholder="Username" ng-model='regCtrl.user.credentials.username'>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+        <div class="col-lg-10">
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model='regCtrl.user.credentials.password'>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputFirstName" class="col-lg-2 control-label">First Name</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="inputFirstName" placeholder="" ng-model='regCtrl.user.profile.firstName'>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="inputLastName" placeholder="" ng-model='regCtrl.user.profile.lastName'>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPhone" class="col-lg-2 control-label">Phone</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="inputEmail" placeholder="" ng-model='regCtrl.user.profile.phone'>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="reset" class="btn btn-default">Cancel</button>
+          <button type="submit" class="btn btn-primary" ng-click="regCtrl.createUser(regCtrl.user)">Submit</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

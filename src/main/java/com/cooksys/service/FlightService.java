@@ -29,7 +29,7 @@ public class FlightService {
 	}
 	
 	//The fixedDelay parameter determines how often a new day is generated as expressed in milliseconds
-	@Scheduled(fixedDelay=30000)
+	@Scheduled(fixedDelay=10000)
 	private void refreshFlights()
 	{
 		flightList = generator.generateNewFlightList();
@@ -42,6 +42,42 @@ public class FlightService {
 				routes.add(flight);
 			}
 		}
+		//find the fastest flight
+		if (routes.size() > 1){
+			Flight theFlight = routes.get(0);		
+			for (Flight flight: routes){
+				if (flight.getFlightTime() > theFlight.getFlightTime())
+					routes.remove(flight);
+					else {
+						routes.remove(theFlight);
+						theFlight = flight;
+					}					
+			}
+		}
+		//find flights with layovers
+		if (routes.isEmpty()){
+			for (Flight flight: flightList){
+				if (flight.getOrigin().equals(origin)){
+					for (Flight connection: flightList){
+						if (flight.getDestination().equals(connection.getOrigin())&&connection.getDestination().equals(destination)){
+							if(flight.getOffset() + flight.getFlightTime() < connection.getOffset()){
+								routes.add(flight);
+								routes.add(connection);}
+					
+						}
+				}
+			}
+		}}
+		if (routes.size() > 2){
+			if (routes.get(1).getFlightTime() + routes.get(1).getOffset() - routes.get(0).getOffset() < 
+					routes.get(3).getFlightTime() + routes.get(3).getOffset() - routes.get(2).getOffset()){
+				routes.remove(2);
+				routes.remove(3);}
+			else {
+				routes.remove(0);
+				routes.remove(1);
+			}
+		}		
 		return routes;
 	}
 	
