@@ -1,3 +1,4 @@
+
 import flightMap from './map/map.module'
 import startPage from './start/start.module.js'
 import regPage from './registration/registration.module.js'
@@ -21,7 +22,7 @@ export default
       'ngStorage',
     
 
-      flightMap,
+      	flightMap,
        startPage,
        regPage,
        profilePage,

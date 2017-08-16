@@ -3,7 +3,7 @@ import bookingService from './booking.service'
 
 export default
   angular
-    .module('booking.page', [])
+    .module('booking.page', [])   
     .component('bookingComponent', bookingComponent)
     .service('bookingService', bookingService)
     .name

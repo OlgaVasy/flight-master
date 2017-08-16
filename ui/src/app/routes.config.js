@@ -29,12 +29,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     ).state('booking',
     		{
     	url: '/booking',
-    	component: 'bookingComponent' ,
-    	resolve: {
-            allFlights: function (bookingService, $transition$) {
-              return bookingService.getRoute($transition$)
-            }
-          }
+    	component: 'bookingComponent'
     }
     )
     

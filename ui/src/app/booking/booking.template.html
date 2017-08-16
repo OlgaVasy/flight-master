@@ -1,61 +1,71 @@
 <div class="background">
-  <div class = "top">
-  <div id="heading" class="headline">
-    Book flights online  
-  </div>    
-  <div class="log" >          
-          <a ui-sref="profile ({username: startCtrl.profileService.userProfile.username})">My profile |</a>
-          <a ng-click="startCtrl.startService.logOut()">Log out</a>       
-       
-      </div>   
-            </div> 
-            <div class = "search" > 
-            <form class="form-horizontal">
-    <fieldset>
-      <legend>Flight Search</legend>
-      <div class="form-group">
-        <label for="inputOrigin" class="col-lg-2 control-label">City of Origin</label>
-        <div class="col-lg-10">
-          <input type="text" class="form-control" id="inputOrigin" placeholder=" " ng-model='bookingCtrl.origin'>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputDestination" class="col-lg-2 control-label">City of Destination</label>
-        <div class="col-lg-10">
-          <input type="text" class="form-control" id="inputDestination" placeholder=" " ng-model='bookingCtrl.destination'>
-        </div>
-      </div>
-       
-      <div class="form-group">
-        <div class="col-lg-10 col-lg-offset-2">         
-          <button type="submit" class="btn btn-primary" ng-click="bookingCtrl.findRoute(bookingCtrl.origin,bookingCtrl.destination)">Search</button>
-        </div>
-      </div>
-    </fieldset>
-  </form>
-  </div>
-  <div class = "table" ng-style="bookingCtrl.bookingService.hideTable()">
-		<div class = "tableHead" >
-		<div>Origin</div>
-		<div>Destination</div>
-		<div>Time in the air</div>
-      <div>Offset</div>
-      </div>
-      <div>{{bookingCtrl.bookingService.message}}</div>
-  <div class = "flightsContainer"ng-repeat= "flight  in bookingCtrl.bookingService.route">
-       <div> {{flight.origin}}
-       </div>
-       <div> {{flight.destination}} </div>
-       <div> {{flight.flightTime}} h</div>
-       <div> {{flight.offset}} h</div>
-      
-       </div>
+	<div class="top">
+		<div id="heading" class="headline">Book flights online</div>
+		<div class="log">
+			<a
+				ui-sref="profile ({username: startCtrl.profileService.userProfile.username})">My
+				profile |</a> <a ng-click="startCtrl.startService.logOut()">Log out</a>
+
+		</div>
+	</div>
+
+	<div class="search">
+		<form class="form-horizontal">
+			<fieldset>
+				<legend>Flight Search</legend>
+				<div class="form-group">
+					<label for="inputOrigin" class="col-lg-2 control-label">City
+						of Origin</label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="inputOrigin"
+							placeholder=" " ng-model='bookingCtrl.origin'>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputDestination" class="col-lg-2 control-label">City
+						of Destination</label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="inputDestination"
+							placeholder=" " ng-model='bookingCtrl.destination'>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-10 col-lg-offset-2">
+						<button type="submit" class="btn btn-primary"
+							ng-click="bookingCtrl.findRoute(bookingCtrl.origin,bookingCtrl.destination)">Search</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+
+	<div class="table" ng-style="bookingCtrl.bookingService.hideTable()">
+		<div class="tableHead">
+			<div>Origin</div>
+			<div>Destination</div>
+			<div>Time in the air</div>
+			<div>Offset</div>
+		</div>
+		<div>{{bookingCtrl.bookingService.message}}</div>
+		<div class="flightsContainer"
+			ng-repeat="flight  in bookingCtrl.bookingService.route">
+			<div>{{flight.origin}}</div>
+			<div>{{flight.destination}}</div>
+			<div>{{flight.flightTime}} h</div>
+			<div>{{flight.offset}} h</div>
+
+		</div>
+	</div>
+	<flight-map></flight-map>
+	<div class="col-lg-10 col-lg-offset-2">
+		<button type="book" class="btn btn-primary"
+			ng-click="bookingCtrl.findRoute(bookingCtrl.origin,bookingCtrl.destination)">Book
+			this flight</button>
+	</div>
+
+
 </div>
-<flight-map></flight-map>
- <div class="col-lg-10 col-lg-offset-2">         
-          <button type="book" class="btn btn-primary" ng-click="bookingCtrl.findRoute(bookingCtrl.origin,bookingCtrl.destination)">Book this flight</button>
-        </div>
-</div>
-      
-       
-    
+
+

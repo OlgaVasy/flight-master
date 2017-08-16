@@ -17,8 +17,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-@Table(name = "client")
-public class User {
+public class UserAcc {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +27,12 @@ public class User {
 	private Credentials credentials;
 
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	private Profile profile;	
+	private Profile profile;
+	
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(updatable = false)
+	private Date joined;
 
 	private Boolean isActive = true;
 
@@ -81,7 +85,7 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		UserAcc other = (UserAcc) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

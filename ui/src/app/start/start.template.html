@@ -5,6 +5,7 @@
   </div>    
   <div class="log" ng-style="startCtrl.startService.loggedInButton()">          
           <a ui-sref="profile ({username: startCtrl.profileService.userProfile.username})">My profile |</a>
+           <a ui-sref="booking" ng-style="{visibility: 'visible'}">Book a Flight |</a>
           <a ng-click="startCtrl.startService.logOut()">Log out</a>
         <a class="please" ng-style="startCtrl.startService.changePage()">Please</a>
         <a ui-sref="login" ng-style="startCtrl.startService.changePage()">log In</a>

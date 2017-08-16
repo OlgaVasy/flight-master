@@ -13,15 +13,15 @@ class LoginService {
 	    if (creds.username !== '' || creds.password !== '') {
 	    return this.$http({
 	      method: 'GET',
-	      params: {password: creds.password, username: creds.username},
-	      url: '${this.apiUrl}/user/validate/credentials/exists/@{' + creds.username + '}'
+	      params: {password: creds.password},
+	      url: `${this.apiUrl}/user/validate/credentials/exists/@${creds.username}`
 	    }).then(
 	     (successResponse) => {
 	       console.log(successResponse.data)
 	       if (successResponse.data) {
-	    	 this.$localStorage.setItem('username', creds.username)
-	         this.$localStorage.setItem('password', creds.password)
-	         this.$state.go('profile', {username: creds.username})
+	    	 this.$localStorage.username = creds.username
+	         this.$localStorage.password = creds.password	         
+	         this.$state.go('welcome', {username: creds.username})
 	       }
 	     },
 	     (failureResponse) => {

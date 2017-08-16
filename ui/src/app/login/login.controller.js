@@ -7,9 +7,8 @@ class LoginController{
 		this.loginService = loginService
 		
 		this.credentials = {
-			    username: '',
-			    password: '',
-			    newState: 'login'
+			    username: "",
+			    password: ""
 			  }
 	
 	}

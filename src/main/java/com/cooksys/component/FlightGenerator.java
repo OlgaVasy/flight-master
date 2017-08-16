@@ -4,24 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cooksys.entity.Flight;
 import com.cooksys.entity.Location;
-import com.cooksys.pojo.Cities;
 import com.cooksys.repository.LocationRepository;
 
 @Component
 public class FlightGenerator {
 	
 	@Autowired
-	LocationRepository repo;	
+	LocationRepository repo;
+	
+	List<Location> cities = new ArrayList<Location>();
+	
+	@PostConstruct
+	private void setUp() {
+		cities.addAll(repo.findAll());
+	}
 	
 	public ArrayList<Flight> generateNewFlightList() {
 		
-		ArrayList<Flight> result = new ArrayList<>();
-		List<Location> cities = repo.findAll();			
+		ArrayList<Flight> result = new ArrayList<>();			
 
 		for (int i = 0; i < 5; i++) {
 

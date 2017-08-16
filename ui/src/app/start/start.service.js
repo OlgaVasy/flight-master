@@ -1,9 +1,10 @@
 export default
 /* @ngInject */
 class StartService {
-  constructor ($http, apiUrl) {
+  constructor ($http, apiUrl, $localStorage) {
     this.$http = $http
     this.apiUrl = apiUrl
+    this.$localStorage = $localStorage
   }
 
   getAllFlights () {
@@ -15,18 +16,18 @@ class StartService {
   })
 }
   changePage () {
-	    if (sessionStorage.getItem('username') !== null && sessionStorage.getItem('password') !== null) {
+	    if (this.$localStorage.username !== null && this.$localStorage. password !== null) {
 	      return {visibility: 'hidden'}
 	    } else {
 	      return {visibility: 'visible'}
 	    }
 	  }
 	  logOut () {
-	    sessionStorage.clear()
+		  return this.$localStorage.clear()
 	  }
 
 	  loggedInButton () {
-	    if(sessionStorage.length === 0){
+	    if(this.$localStorage.length === 0){
 	      return {visibility: 'hidden'}
 	    } else {
 	      return {visibility: 'visible'}

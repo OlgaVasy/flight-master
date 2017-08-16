@@ -13,21 +13,21 @@ class RegistrationService {
     	        username: user.credentials.username
     	      },
     	      profile: {
-    	        email: user.profile.email,
-    	        firstName: user.profile.firstName,
-    	        lastName: user.profile.lastName,
-    	        phone: user.profile.phone
+    	        email: user.profile.email    	        
     	      }
     	    }
     return this.$http({
       method: 'POST',
-      url: '${this.apiUrl}/client/users',
-      data: newUser
+      url: `${this.apiUrl}/user/users`,
+      data: newUser,
+      params: {firstName: user.profile.firstName, lastName: user.profile.lastName, phone: user.profile.phone}
     }).then(
       (success) => {
         console.log('User has been created')        
       },
-      (failure) => {}
+      (failure) => {
+    	  
+      }
     )
   }
 }

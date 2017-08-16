@@ -15,7 +15,7 @@ class BookingController{
 		    	this.route = success.data		    	
 		      },
 		      (failure) => {
-		        alert('fail')
+	        alert('fail')
 		      }
 		    )
 		  }

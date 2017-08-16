@@ -5,7 +5,8 @@ class BookingService {
     this.$http = $http
     this.apiUrl = apiUrl   
     this.message = ""
-    this.route = null
+    this.route = null   
+    
   }
 
   getRoute (origin, destination) {
@@ -21,9 +22,9 @@ class BookingService {
     	  return this.route = response.data
     	  
       }) 
- }
+ }  
   hideTable () {
-	    if (this.route == null) {
+	    if (this.route === null || this.route === undefined) {
 	      return {visibility: 'hidden'}
 	    } else {
 	    	console.log(this.route)

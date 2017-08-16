@@ -33,12 +33,14 @@ public class FlightService {
 	private void refreshFlights()
 	{
 		flightList = generator.generateNewFlightList();
-		repo.save(flightList);		
+		//repo.save(flightList);		
 	}
 	public List<Flight> getRoute(String origin, String destination){
+		
+		
 		List<Flight> routes = new ArrayList<>();
 		for (Flight flight: flightList){
-			if (flight.getOrigin().equals(origin) && flight.getDestination().equals(destination)){
+			if (flight.getOrigin().equalsIgnoreCase(origin) && flight.getDestination().equalsIgnoreCase(destination)){
 				routes.add(flight);
 			}
 		}
@@ -57,9 +59,9 @@ public class FlightService {
 		//find flights with layovers
 		if (routes.isEmpty()){
 			for (Flight flight: flightList){
-				if (flight.getOrigin().equals(origin)){
+				if (flight.getOrigin().equalsIgnoreCase(origin)){
 					for (Flight connection: flightList){
-						if (flight.getDestination().equals(connection.getOrigin())&&connection.getDestination().equals(destination)){
+						if (flight.getDestination().equalsIgnoreCase(connection.getOrigin())&&connection.getDestination().equalsIgnoreCase(destination)){
 							if(flight.getOffset() + flight.getFlightTime() < connection.getOffset()){
 								routes.add(flight);
 								routes.add(connection);}
