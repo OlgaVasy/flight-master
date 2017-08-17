@@ -34,8 +34,7 @@ public class BookedFlightService {
 	}
 
 	public BookedFlight bookAFlight(FlightToBookDto flights) {
-		
-		
+			
 		UserAcc user = uService.checkUserCredentials(flights.getCredentials());
 		
 		if (user != null) {

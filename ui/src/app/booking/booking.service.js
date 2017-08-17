@@ -31,14 +31,14 @@ class BookingService {
 	    	        password: this.$localStorage.password,
 	    	        username: this.$localStorage.username
 	    	         },
-	    	      flight: route
+	    	      flights: route
 	    	    }	 
 	  console.log(newFlights)
 	    return this.$http({
 	      method: 'POST',
 	      url: `${this.apiUrl}/bookedFlight/bookedFlights`,
 	      data: newFlights,
-	      params: {flight: route}
+	      params: {flights: route}
 	    }).then(
 	      (success) => {
 	        console.log('Flight has been booked!') 
