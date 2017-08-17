@@ -33,7 +33,7 @@
 				<div class="form-group">
 					<div class="col-lg-10 col-lg-offset-2">
 						<button type="submit" class="btn btn-primary"
-							ng-click="bookingCtrl.findRoute(bookingCtrl.origin,bookingCtrl.destination)">Search</button>
+							ng-click="bookingCtrl.findRoute()">Search</button>
 					</div>
 				</div>
 			</fieldset>
@@ -61,7 +61,7 @@
 	<flight-map></flight-map>
 	<div class="col-lg-10 col-lg-offset-2">
 		<button type="book" class="btn btn-primary"
-			ng-click="bookingCtrl.findRoute(bookingCtrl.origin,bookingCtrl.destination)">Book
+			ng-click="bookingCtrl.bookingService.bookAFlight(bookingCtrl.bookingService.route)">Book
 			this flight</button>
 	</div>
 

@@ -1,11 +1,12 @@
 export default
 /* @ngInject */
 class BookingService {
-  constructor ($http, apiUrl) {
+  constructor ($http, apiUrl, $localStorage) {
     this.$http = $http
     this.apiUrl = apiUrl   
     this.message = ""
-    this.route = null   
+    this.route = null  
+    this.$localStorage = $localStorage
     
   }
 
@@ -23,6 +24,32 @@ class BookingService {
     	  
       }) 
  }  
+  bookAFlight (route){
+	  route = this.route
+	  let newFlights = {
+	    		credentials: {
+	    	        password: this.$localStorage.password,
+	    	        username: this.$localStorage.username
+	    	         },
+	    	      flights: route
+	    	    }	 
+	  console.log(newFlights)
+	    return this.$http({
+	      method: 'POST',
+	      url: `${this.apiUrl}/bookedFlight/bookedFlights`,
+	      data: newFlights,
+	      params: {flights: route}
+	    }).then(
+	      (success) => {
+	        console.log('Flight has been booked!') 
+	        console.log(newFlights)
+	      },
+	      (failure) => {
+	    	  
+	      }
+	    )
+	  }
+  
   hideTable () {
 	    if (this.route === null || this.route === undefined) {
 	      return {visibility: 'hidden'}

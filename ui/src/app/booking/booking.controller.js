@@ -7,6 +7,15 @@ class BookingController{
 		this.bookingService = bookingService	
 		this.origin = ""
 		this.destination = ""
+			
+			  this.newFlight = {
+
+				credentials: {
+				      password: 'password',
+				      username: 'username'
+				    },
+				    flights: ''
+				  }
 		
 		}
 	 findRoute () {
@@ -19,5 +28,4 @@ class BookingController{
 		      }
 		    )
 		  }
-
 	}

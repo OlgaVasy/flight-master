@@ -1,5 +1,6 @@
 package com.cooksys.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -32,13 +33,14 @@ public class BookedFlightService {
 		return tRepo.findAll();
 	}
 
-	public BookedFlight createSimpleTweet(FlightToBookDto flight) {
-		UserAcc tweetUser = uService.checkUserCredentials(flight.getCredentials());
+	public BookedFlight bookAFlight(FlightToBookDto flights) {
+		//for (FlightToBookDto flight: flights){
+		UserAcc user = uService.checkUserCredentials(flights.getCredentials());
 		
-		if (tweetUser != null) {
+		if (user != null) {
 			BookedFlight flightCrea = new BookedFlight();
-			flightCrea.setFlight(flight.getFlight());
-			flightCrea.setClient(tweetUser);			
+			flightCrea.setFlight(flights.getFlight());
+			flightCrea.setClient(user);			
 			return tRepo.save(flightCrea);
 		}
 		

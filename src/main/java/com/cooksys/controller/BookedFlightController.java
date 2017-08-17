@@ -1,5 +1,6 @@
 package com.cooksys.controller;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,8 +47,8 @@ public class BookedFlightController {
 	}
 	
 	@PostMapping("bookedFlights")
-	public BookedFlightDto bookAFlight(@RequestBody FlightToBookDto flight, HttpServletResponse response) {
-		return tMapper.bookedFlightDto(tService.createSimpleTweet(flight));
+	public BookedFlightDto bookAFlight(@RequestBody FlightToBookDto flights, HttpServletResponse response) {
+		return tMapper.bookedFlightDto(tService.bookAFlight(flights));
 	}
 	
 	@GetMapping("bookedFlights/{id}")

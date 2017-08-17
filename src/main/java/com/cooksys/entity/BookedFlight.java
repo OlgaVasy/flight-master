@@ -15,7 +15,7 @@ public class BookedFlight {
 	@GeneratedValue
 	private long id;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToOne
 	private Flight flight;	
 	
 	@ManyToOne

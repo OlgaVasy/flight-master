@@ -33,7 +33,7 @@ public class FlightService {
 	private void refreshFlights()
 	{
 		flightList = generator.generateNewFlightList();
-		//repo.save(flightList);		
+		repo.save(flightList);		
 	}
 	public List<Flight> getRoute(String origin, String destination){
 		
