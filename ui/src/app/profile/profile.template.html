@@ -1,3 +1,26 @@
- <div id="heading" class="headline">
-    This is a profile page  
-  </div> 
+ <div class="background">
+	<div class="top">
+		<div id="heading" class="headline">Book flights online</div>
+		<div class="log">
+			<a ui-sref="welcome">Start page |</a> 
+			<a ui-sref="booking">Book a flight |</a> 
+				<a ng-click="profileCtrl.profileService.logOut()">Log out</a>
+
+		</div>
+	</div>
+	<div class = "table">
+		<div class = "tableHead">
+		<div>Origin</div>
+		<div>Destination</div>
+		<div>Time in the air</div>
+      <div>Offset</div>
+      </div>
+      <div class = "flightsContainer"ng-repeat= "flight  in profileCtrl.profileService.flightsBooked">
+       <div> {{flight.origin}}
+       </div>
+       <div> {{flight.destination}} </div>
+       <div> {{flight.flightTime}} hours</div>
+       <div> {{flight.offset}} hours</div>
+      
+       </div>
+     </div>

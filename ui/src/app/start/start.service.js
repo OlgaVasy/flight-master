@@ -1,7 +1,7 @@
 export default
 /* @ngInject */
 class StartService {
-  constructor ($http, apiUrl, $localStorage) {
+    constructor ($http, apiUrl, $localStorage) {
     this.$http = $http
     this.apiUrl = apiUrl
     this.$localStorage = $localStorage
@@ -23,11 +23,12 @@ class StartService {
 	    }
 	  }
 	  logOut () {
-		  return this.$localStorage.clear()
+		  this.$localStorage.username = null
+		  this.$localStorage.password = null
 	  }
 
 	  loggedInButton () {
-	    if(this.$localStorage.length === 0){
+	    if(this.$localStorage.username === null && this.$localStorage. password === null){
 	      return {visibility: 'hidden'}
 	    } else {
 	      return {visibility: 'visible'}

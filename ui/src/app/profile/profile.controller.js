@@ -2,7 +2,7 @@ export default
 
 /* @ngInject */
 class ProfileController{
-	constructor(ProfileService){
+	constructor(profileService){
 		
 		this.profileService = profileService		
 	

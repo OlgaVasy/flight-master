@@ -5,21 +5,24 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.cooksys.dto.UserAccCredOnlyDto;
+import com.cooksys.entity.BookedFlight;
 import com.cooksys.entity.Credentials;
 import com.cooksys.entity.UserAcc;
 import com.cooksys.exception.EntityNotFoundException;
 import com.cooksys.exception.UsernameExistsException;
+import com.cooksys.repository.BookedFlightRepository;
 import com.cooksys.repository.UserAccRepository;
 
 @Service
 public class UserAccService {
 	
 	private UserAccRepository userAccRepository;	
+	private BookedFlightRepository bookedFlightRepository;
 	
-	public UserAccService(UserAccRepository userAccRepository) {
-		this.userAccRepository = userAccRepository;		
-	}	
-	
+	public UserAccService(UserAccRepository userAccRepository, BookedFlightRepository bookedFlightRepository) {
+		this.userAccRepository = userAccRepository;	
+		this.bookedFlightRepository = bookedFlightRepository;	
+	}		
 	public boolean login(String password, String username) {	
         return userAccRepository.findByCredentials_UsernameEqualsAndCredentials_PasswordEquals(username, password) != null;
     }
@@ -112,6 +115,16 @@ public class UserAccService {
 		return userAccRepository
 				.findByCredentials_UsernameEqualsAndCredentials_PasswordEquals(
 						user.getUsername(), user.getPassword());
+	}
+	
+	public List<BookedFlight> getUserBookedFlights(String username) {
+		UserAcc user = userAccRepository.findByCredentials_UsernameEquals(username);
+		
+		if (user != null && user.getIsActive().equals(true)) {
+			return bookedFlightRepository.findByClientId(user.getId());
+		}
+		
+		throw new EntityNotFoundException();
 	}
 	
 }

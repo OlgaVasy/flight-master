@@ -34,13 +34,14 @@ public class BookedFlightService {
 	}
 
 	public BookedFlight bookAFlight(FlightToBookDto flights) {
-		//for (FlightToBookDto flight: flights){
+		
+		
 		UserAcc user = uService.checkUserCredentials(flights.getCredentials());
 		
 		if (user != null) {
 			BookedFlight flightCrea = new BookedFlight();
 			flightCrea.setFlight(flights.getFlight());
-			flightCrea.setClient(user);			
+			flightCrea.setClient(user);	
 			return tRepo.save(flightCrea);
 		}
 		

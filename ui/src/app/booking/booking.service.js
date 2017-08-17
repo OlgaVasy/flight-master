@@ -31,14 +31,14 @@ class BookingService {
 	    	        password: this.$localStorage.password,
 	    	        username: this.$localStorage.username
 	    	         },
-	    	      flights: route
+	    	      flight: route
 	    	    }	 
 	  console.log(newFlights)
 	    return this.$http({
 	      method: 'POST',
 	      url: `${this.apiUrl}/bookedFlight/bookedFlights`,
 	      data: newFlights,
-	      params: {flights: route}
+	      params: {flight: route}
 	    }).then(
 	      (success) => {
 	        console.log('Flight has been booked!') 
@@ -57,6 +57,11 @@ class BookingService {
 	    	console.log(this.route)
 	      return {visibility: 'visible'}
 	    }
-	  }}
+	  }
+  logOut () {
+	  this.$localStorage.username = null
+	  this.$localStorage.password = null				 
+      this.$state.go('welcome')				  
+}}
 
 

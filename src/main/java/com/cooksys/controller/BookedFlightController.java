@@ -37,7 +37,7 @@ public class BookedFlightController {
 		this.tUserMapper = tUserMapper;
 	}
 	
-	@GetMapping("bookedFlights")
+	@GetMapping
 	public List<BookedFlightDto> getAll(HttpServletResponse response) {
 		return tService.getAll()
 				.stream()

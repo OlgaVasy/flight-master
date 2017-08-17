@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cooksys.dto.BookedFlightDto;
 import com.cooksys.dto.UserAccCreateDto;
 import com.cooksys.dto.UserAccCredOnlyDto;
 import com.cooksys.dto.UserAccDto;
+import com.cooksys.mapper.BookedFlightMapper;
 import com.cooksys.mapper.UserAccMapper;
 import com.cooksys.service.UserAccService;
 
@@ -31,10 +33,12 @@ public class UserAccController {
 
 	private UserAccService uService;
 	private UserAccMapper tMapper;	
+	private BookedFlightMapper flightMapper;
 
-	public UserAccController(UserAccService uService, UserAccMapper tMapper) {
+	public UserAccController(UserAccService uService, UserAccMapper tMapper, BookedFlightMapper flightMapper) {
 		this.uService = uService;
-		this.tMapper = tMapper;		
+		this.tMapper = tMapper;	
+		this.flightMapper = flightMapper;
 	}
 	
     @GetMapping("validate/credentials/exists/@{username}")
@@ -99,6 +103,14 @@ public class UserAccController {
 	public UserAccDto deleteUser(@RequestBody UserAccCredOnlyDto creds,  @PathVariable String username, HttpServletResponse response) {
 		response.setStatus(HttpServletResponse.SC_ACCEPTED);
 		return tMapper.tUserDto(uService.delete(username, tMapper.toUserAcc(creds)));
-	}	
+	}
+	@GetMapping("users/@{username}/bookedFlights")
+	public List<BookedFlightDto> getUserFlights(@PathVariable String username, HttpServletResponse response) {
+		response.setStatus(HttpServletResponse.SC_FOUND);
+		return uService.getUserBookedFlights(username).stream()
+				.filter(tweet -> tweet.getIsDeleted().equals(false))
+				.map(flightMapper::bookedFlightDto)
+				.collect(Collectors.toList());
+	}
 	
 }

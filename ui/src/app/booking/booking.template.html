@@ -2,9 +2,10 @@
 	<div class="top">
 		<div id="heading" class="headline">Book flights online</div>
 		<div class="log">
+		<a ui-sref="welcome">Start page |</a> 
 			<a
 				ui-sref="profile ({username: startCtrl.profileService.userProfile.username})">My
-				profile |</a> <a ng-click="startCtrl.startService.logOut()">Log out</a>
+				profile |</a> <a ng-click="bookingCtrl.bookingService.logOut()">Log out</a>
 
 		</div>
 	</div>
@@ -49,21 +50,21 @@
 			<div>Offset</div>
 		</div>
 		<div>{{bookingCtrl.bookingService.message}}</div>
-		<div class="flightsContainer"
+		<div class="bookflightsContainer"
 			ng-repeat="flight  in bookingCtrl.bookingService.route">
 			<div>{{flight.origin}}</div>
 			<div>{{flight.destination}}</div>
 			<div>{{flight.flightTime}} h</div>
 			<div>{{flight.offset}} h</div>
-
-		</div>
-	</div>
-	<flight-map></flight-map>
-	<div class="col-lg-10 col-lg-offset-2">
+<div class="col-lg-10 col-lg-offset-2">
 		<button type="book" class="btn btn-primary"
 			ng-click="bookingCtrl.bookingService.bookAFlight(bookingCtrl.bookingService.route)">Book
 			this flight</button>
 	</div>
+		</div>
+	</div>
+	<flight-map></flight-map>
+	
 
 
 </div>

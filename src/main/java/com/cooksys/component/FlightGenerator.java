@@ -28,7 +28,7 @@ public class FlightGenerator {
 	
 	public ArrayList<Flight> generateNewFlightList() {
 		
-		ArrayList<Flight> result = new ArrayList<>();			
+		ArrayList<Flight> result = new ArrayList<>();		
 
 		for (int i = 0; i < 5; i++) {
 
